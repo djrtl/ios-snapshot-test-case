@@ -140,10 +140,15 @@
  - UIVisualEffect #70
  - UIAppearance #91
  - Size Classes #92
- 
- @attention If the view does't belong to a UIWindow, it will create one and add the view as a subview.
  */
 @property (readwrite, nonatomic, assign) BOOL usesDrawViewHierarchyInRect;
+
+/**
+ When YES, adds view to a window before capturing the snapshot.
+ @attention Can't be used with layers.
+ @attention If the view does't belong to a UIWindow, it will create one and add the view as a subview.
+ */
+@property (readwrite, nonatomic, assign) BOOL usesWindowToDrawViewHierarchy;
 
 /**
  When set to values different than 0, it uses a specific scale for generating and comparing images rather than using the main screen's default scale.

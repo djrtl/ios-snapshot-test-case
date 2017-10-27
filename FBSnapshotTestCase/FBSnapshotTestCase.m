@@ -63,6 +63,17 @@
   _snapshotController.usesDrawViewHierarchyInRect = usesDrawViewHierarchyInRect;
 }
 
+- (BOOL)usesWindowToDrawViewHierarchy
+{
+  return _snapshotController.usesWindowToDrawViewHierarchy;
+}
+
+- (void)setUsesWindowToDrawViewHierarchy:(BOOL)usesWindowToDrawViewHierarchy
+{
+  NSAssert1(_snapshotController, @"%s cannot be called before [super setUp]", __FUNCTION__);
+  _snapshotController.usesWindowToDrawViewHierarchy = usesWindowToDrawViewHierarchy;
+}
+
 - (void)setManualScale:(NSUInteger)manualScale
 {
   NSAssert1(_snapshotController, @"%s cannot be called before [super setUp]", __FUNCTION__);

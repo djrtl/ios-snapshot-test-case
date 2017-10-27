@@ -350,8 +350,8 @@ typedef NS_ENUM(NSUInteger, FBTestSnapshotFileNameType) {
 - (UIImage *)_imageForViewOrLayer:(id)viewOrLayer
 {
   if ([viewOrLayer isKindOfClass:[UIView class]]) {
-    if (_usesDrawViewHierarchyInRect) {
-      return [UIImage fb_imageForView:viewOrLayer scale:self.manualScale];
+    if (_usesWindowToDrawViewHierarchy) {
+      return [UIImage fb_imageForView:viewOrLayer scale:self.manualScale drawingViewHierarchyInRect:_usesDrawViewHierarchyInRect];
     } else {
       return [UIImage fb_imageForViewLayer:viewOrLayer scale:self.manualScale];
     }

@@ -67,6 +67,11 @@ extern NSString *const FBDiffedImageKey;
 @property (readwrite, nonatomic, assign) BOOL usesDrawViewHierarchyInRect;
 
 /**
+ Adds view to UIWindow before capturing the snapshot
+ */
+@property (readwrite, nonatomic, assign) BOOL usesWindowToDrawViewHierarchy;
+
+/**
  The directory in which referfence images are stored.
  */
 @property (readwrite, nonatomic, copy) NSString *referenceImagesDirectory;

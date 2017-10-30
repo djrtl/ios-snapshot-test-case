@@ -38,7 +38,7 @@
   return [self fb_imageForLayer:view.layer scale:scale];
 }
 
-+ (UIImage *)fb_imageForView:(UIView *)view scale:(CGFloat)scale
++ (UIImage *)fb_imageForView:(UIView *)view scale:(CGFloat)scale drawingViewHierarchyInRect:(BOOL)drawingViewHierarchyInRect
 {
   CGRect bounds = view.bounds;
   NSAssert1(CGRectGetWidth(bounds), @"Zero width for view %@", view);
@@ -57,8 +57,19 @@
   }
 
   UIGraphicsBeginImageContextWithOptions(bounds.size, NO, scale);
+  
   [view layoutIfNeeded];
-  [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
+  
+  if (drawingViewHierarchyInRect) {
+    [view drawViewHierarchyInRect:bounds afterScreenUpdates:YES];
+  }
+  else {
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    NSAssert1(context, @"Could not generate context for view %@", view);
+    CGContextSaveGState(context);
+    [view.layer renderInContext:context];
+    CGContextRestoreGState(context);
+  }
 
   UIImage *snapshot = UIGraphicsGetImageFromCurrentImageContext();
   UIGraphicsEndImageContext();

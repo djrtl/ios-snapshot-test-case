@@ -62,9 +62,16 @@ extern NSString *const FBDiffedImageKey;
 @property (readwrite, nonatomic, assign, getter=isDeviceAgnostic) BOOL deviceAgnostic;
 
 /**
- Uses drawViewHierarchyInRect:afterScreenUpdates: to draw the image instead of renderInContext:
+ When set to YES, uses drawViewHierarchyInRect:afterScreenUpdates: to draw the image instead of renderInContext:.
+ @attention The setting only affects views, and ignored for layers.
  */
 @property (readwrite, nonatomic, assign) BOOL usesDrawViewHierarchyInRect;
+
+/**
+ When set to YES, Adds view to UIWindow before capturing the snapshot.
+ @attention The setting only affects views, and ignored for layers.
+ */
+@property (readwrite, nonatomic, assign) BOOL usesWindowToDrawViewHierarchy;
 
 /**
  The directory in which referfence images are stored.

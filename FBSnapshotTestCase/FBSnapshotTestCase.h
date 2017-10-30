@@ -135,17 +135,18 @@
 @property (readwrite, nonatomic, assign, getter=isDeviceAgnostic) BOOL deviceAgnostic;
 
 /**
- When YES, renders a snapshot of the complete view hierarchy as visible onscreen.
+ When set to YES, renders a snapshot of the complete view hierarchy as visible onscreen.
  There are several things that do not work if renderInContext: is used.
  - UIVisualEffect #70
  - UIAppearance #91
  - Size Classes #92
+ @attention The setting only affects views, and ignored for layers.
  */
 @property (readwrite, nonatomic, assign) BOOL usesDrawViewHierarchyInRect;
 
 /**
- When YES, adds view to a window before capturing the snapshot.
- @attention Can't be used with layers.
+ When set to YES, adds view to a window before capturing the snapshot.
+ @attention The setting only affects views, and ignored for layers.
  @attention If the view does't belong to a UIWindow, it will create one and add the view as a subview.
  */
 @property (readwrite, nonatomic, assign) BOOL usesWindowToDrawViewHierarchy;

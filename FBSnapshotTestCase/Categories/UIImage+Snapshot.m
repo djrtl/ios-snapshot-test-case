@@ -61,7 +61,7 @@
   [view layoutIfNeeded];
   
   if (drawingViewHierarchyInRect) {
-    [view drawViewHierarchyInRect:view.bounds afterScreenUpdates:YES];
+    [view drawViewHierarchyInRect:bounds afterScreenUpdates:YES];
   }
   else {
     CGContextRef context = UIGraphicsGetCurrentContext();
